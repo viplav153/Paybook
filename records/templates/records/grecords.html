@@ -1,0 +1,330 @@
+{% extends 'base.html' %}<!--for linking base .html-->
+{%load crispy_forms_tags%}
+{% block content %}
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+
+
+
+
+#contact input[type="text"],
+#contact input[type="email"],
+#contact input[type="tel"],
+#contact input[type="url"],
+#contact textarea,
+#contact button[type="submit"] {
+  font: 400 12px/16px "Roboto", Helvetica, Arial, sans-serif;
+}
+
+#contact {
+  background: #F9F9F9;
+  padding: 25px;
+  margin: 150px 0;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+#contact h3 {
+  display: block;
+  font-size: 30px;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+
+#contact h4 {
+  margin: 5px 0 15px;
+  display: block;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+fieldset {
+  border: medium none !important;
+  margin: 0 0 10px;
+  min-width: 100%;
+  padding: 0;
+  width: 100%;
+}
+
+.container {
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+
+#contact input[type="text"],
+#contact input[type="email"],
+#contact input[type="tel"],
+#contact input[type="url"],
+#contact textarea {
+  width: 100%;
+  border: 1px solid #ccc;
+  background: #FFF;
+  margin: 0 0 5px;
+  padding: 10px;
+}
+
+#contact input[type="text"]:hover,
+#contact input[type="email"]:hover,
+#contact input[type="tel"]:hover,
+#contact input[type="url"]:hover,
+#contact textarea:hover {
+  -webkit-transition: border-color 0.3s ease-in-out;
+  -moz-transition: border-color 0.3s ease-in-out;
+  transition: border-color 0.3s ease-in-out;
+  border: 1px solid #aaa;
+}
+
+#contact textarea {
+  height: 100px;
+  max-width: 100%;
+  resize: none;
+}
+
+#contact button[type="submit"] {
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  background: #4CAF50;
+  color: #FFF;
+  margin: 0 0 5px;
+  padding: 10px;
+  font-size: 15px;
+}
+
+#contact button[type="submit"]:hover {
+  background: #43A047;
+  -webkit-transition: background 0.3s ease-in-out;
+  -moz-transition: background 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
+}
+
+#contact button[type="submit"]:active {
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.copyright {
+  text-align: center;
+}
+
+#contact input:focus,
+#contact textarea:focus {
+  outline: 0;
+  border: 1px solid #aaa;
+}
+
+::-webkit-input-placeholder {
+  color: #888;
+}
+
+:-moz-placeholder {
+  color: #888;
+}
+
+::-moz-placeholder {
+  color: #888;
+}
+
+:-ms-input-placeholder {
+  color: #888;
+
+}
+
+
+      body {
+  font-family: 'lato', sans-serif;
+}
+
+
+
+h2 {
+  font-size: 26px;
+  margin: 20px 0;
+  text-align: center;
+}
+h2 small {
+  font-size: 0.5em;
+}
+
+.responsive-table li {
+  border-radius: 3px;
+  padding: 25px 30px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+.responsive-table .table-header {
+  background-color: #95A5A6;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.responsive-table .table-row {
+  background-color: #ffffff;
+  box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+}
+.responsive-table .col-1 {
+  flex-basis: 10%;
+}
+.responsive-table .col-2 {
+  flex-basis: 40%;
+}
+.responsive-table .col-3 {
+  flex-basis: 25%;
+}
+.responsive-table .col-4 {
+  flex-basis: 25%;
+}
+@media all and (max-width: 767px) {
+  .responsive-table .table-header {
+    display: none;
+  }
+  .responsive-table li {
+    display: block;
+  }
+  .responsive-table .col {
+    flex-basis: 100%;
+  }
+  .responsive-table .col {
+    display: flex;
+    padding: 10px 0;
+  }
+  .responsive-table .col:before {
+    color: #6C7A89;
+    padding-right: 10px;
+    content: attr(data-label);
+    flex-basis: 50%;
+    text-align: right;
+  }
+}
+
+</style>
+
+    
+	
+
+<!--{% if error %}
+{{ error }}
+<br />
+<br />
+{% endif %}
+<h1>Add your records here!</h1>
+
+<form method="POST" action="{% url 'recordbl' %}" enctype="multipart/form-data">
+{% csrf_token %}
+Name :
+<br/>
+<input type="text" name="name" />
+<br />
+Type of record:
+<br/>
+    <select class="custom-select"  name="type_of_record" >
+      <option selected value="borrow" >Borrow</option>
+      <option value="lend">Lend</option>
+      
+      
+    </select>
+
+<br/>
+Description of  Lended / Borrowed :
+<br />
+<input type="text" name="description" />
+<br />
+Amount  Lended / Borrowed :
+<br />
+<input type="number" name="amount" />
+<br />
+Enter number of day for returning/taking  back money:
+<br/>
+<input type="number" name="no_days" />
+<br/>
+Email of lender/borrwer:
+<br/>
+
+<input type="email" id="email" name="email">
+</br>
+
+<br />
+
+<input class="btn btn-primary" type="submit" value="ADD RECORD" />
+</form>
+<hr>-->
+
+<div class="container">  
+	<form id="contact" action="{% url 'create' %}" method="post">
+		{% csrf_token %}
+	  <h3> Add your records here!</h3>
+	  
+	  
+	  <fieldset>
+        <input placeholder="Amount Spent" tabindex="5" required  type="Text" name="amount">
+		
+	  </fieldset>
+	  <fieldset>
+		<input placeholder="Description" type="Text" tabindex="4" required name="description">
+	  </fieldset>
+	  
+	  <fieldset>
+		<button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+	  </fieldset>
+	  <p class="copyright">Designed by <a href="https://dscbvppune.team" target="_blank" title="DSC BVP">Viplav</a></p>
+	</form>
+  </div>
+
+  <div class="container-fluid">
+    <h2>Spent list</h2>
+    <ul class="responsive-table">
+      <li class="table-header">
+        <div class="col col-2">Amount</div>
+        <div class="col col-4">Description</div>
+        <div class="col col-3">Date/time of spending</div>
+        
+      </li>
+      {% for info in infos %}
+      
+      <li class="table-row">
+        <div class="col col-2" data-label="Amount">{{ info.amount }}</div>
+        <div class="col col-4" data-label="Description">{{ info.description }}</div>
+        <div class="col col-3" data-label="Date of transaction">{{ info.spent_date }}</div>
+        
+      </li>
+      {% endfor %}
+    </ul>
+    <div class="pagination">
+        <span class="step-links">
+            {% if infos.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ infos.previous_page_number }}">previous</a>
+            {% endif %}
+    
+            <span class="current">
+                Page {{ infos.number }} of {{ infos.paginator.num_pages }}.
+            </span>
+    
+            {% if infos.has_next %}
+                <a href="?page={{ infos.next_page_number }}">next</a>
+                <a href="?page={{ infospaginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+    
+  </div>
+
+
+  
+
+ {% endblock %}
+ 

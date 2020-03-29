@@ -1,0 +1,137 @@
+{% extends 'base.html' %}<!--for linking base .html-->
+{%load crispy_forms_tags%}
+{% block content %}
+
+<!--<center><h1>Recent feedbacks</h1></center>
+{% for records in record %}
+<div class="row pt-3">
+  
+    <h1>{{ records.name }}</h1>
+    <p>{{ records.summary }}</p>
+    <p>{{ records.pub_date_deadline }}</p>
+    <p>{{ records.type_of_record }}</p>
+  </div>
+  
+{% endfor %}-->
+<style>
+   body {
+  font-family: 'lato', sans-serif;
+}
+
+.container {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+h2 {
+  font-size: 26px;
+  margin: 20px 0;
+  text-align: center;
+}
+h2 small {
+  font-size: 0.5em;
+}
+
+.responsive-table li {
+  border-radius: 3px;
+  padding: 25px 30px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+.responsive-table .table-header {
+  background-color: #95A5A6;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.responsive-table .table-row {
+  background-color: #ffffff;
+  box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+}
+.responsive-table .col-1 {
+  flex-basis: 10%;
+}
+.responsive-table .col-2 {
+  flex-basis: 40%;
+}
+.responsive-table .col-3 {
+  flex-basis: 25%;
+}
+.responsive-table .col-4 {
+  flex-basis: 25%;
+}
+@media all and (max-width: 767px) {
+  .responsive-table .table-header {
+    display: none;
+  }
+  .responsive-table li {
+    display: block;
+  }
+  .responsive-table .col {
+    flex-basis: 100%;
+  }
+  .responsive-table .col {
+    display: flex;
+    padding: 10px 0;
+  }
+  .responsive-table .col:before {
+    color: #6C7A89;
+    padding-right: 10px;
+    content: attr(data-label);
+    flex-basis: 50%;
+    text-align: right;
+  }
+}
+
+</style>
+
+<div class="container">
+    <h2>Borrow list</h2>
+    <ul class="responsive-table">
+      <li class="table-header">
+        <div class="col col-2">Name of lender</div>
+        <div class="col col-2">Deadline for Giving money</div>
+        <div class="col col-3">Amount</div>
+        <div class="col col-4">Description</div>
+       
+      </li>
+      {% for records in record %}
+      
+      <li class="table-row">
+        <div class="col col-2" data-label="Lender name">{{ records.name }}</div>
+        <div class="col col-2" data-label="Deadline">{{ records.pub_date_deadline }}</div>
+        <div class="col col-3" data-label="Amount">{{ records.amount }}</div>
+        <div class="col col-4" data-label="Description">{{ records.summary }}</div>
+        
+      </li>
+      {% endfor %}
+    </ul>
+    <div class="pagination">
+        <span class="step-links">
+            {% if record.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ record.previous_page_number }}">previous</a>
+            {% endif %}
+    
+            <span class="current">
+                Page {{ record.number }} of {{ record.paginator.num_pages }}.
+            </span>
+    
+            {% if record.has_next %}
+                <a href="?page={{ record.next_page_number }}">next</a>
+                <a href="?page={{ record.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+    Given money want delete your records <a href="{% url 'delb' %}">click here !!</a>
+  </div>
+
+
+
+
+
+{%endblock%}

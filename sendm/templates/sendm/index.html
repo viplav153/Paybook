@@ -1,0 +1,11 @@
+{% extends 'base.html' %}<!--for linking base .html-->
+{%load crispy_forms_tags%}
+{% block content %}
+<div >
+    <strong>Success!</strong> Your Reminder has been sent successfully.
+   
+</div>
+<div>
+    <a href="{%url 'viewrecord'%}">Back </a>
+</div>
+{%endblock%}

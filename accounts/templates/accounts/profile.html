@@ -1,0 +1,101 @@
+{% extends 'base.html' %}<!--for linking base .html-->
+{%load crispy_forms_tags%}
+{% load staticfiles %}  
+{% block content %}
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<style type="text/css">
+   
+   h2, h3{
+       font-family: 'Product Sans', sans-serif;
+   }
+
+   a, a:hover, a:visited, a:active{
+       text-decoration: none;
+       font-size: 16px;
+       color: #13171c;
+   }
+
+   .profile{
+       padding: 75px 0 75px 0;
+   }
+
+   table, td{
+       font-family: 'Product Sans', sans-serif;
+       font-size: 16px;
+   }
+
+</style>
+<div class="profile">
+
+<div class="container">
+    <div class="row mb-5">
+        <div class="col-md-4">
+            
+        </div>
+        <div class="col-md-4">
+    <b> <h1>Profile</h2> </b>   
+      <br>  
+    
+        <center>  <img class="rounded-circle account-img" src="{%static 'default.png'%}"></center> 
+        <br>     <br>   </div>
+          </div>                 
+            <div class="table-responsive">          
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <td>Username</td>
+                        <td>{{ user.username }}</td>
+                    </tr>
+                    <tr>
+                        <td>Name</td>
+                        <td>{{ user.profile.name }}</td>
+                    </tr>
+                   
+                    <tr>
+                        <td>Email</td>
+                        <td>{{ user.email }}</td>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td><a href="{% url 'change_password' %}">Change Password</a></td>
+                    </tr>
+                    
+                    </tbody>
+                </table>
+            </div>
+      <a href="{% url 'profile' %}">Edit Details</a>
+ 
+    </div>
+    <br>
+    <br>
+    <div class="row mb-5">
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{% static '30.png' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h3 class="card-title">Amount spent last 30 days</h3>
+                  <b> <h1> <p class="card-text">{{total30}}</p></h1></b>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4" ></div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{% static 'unnamed.png' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h3 class="card-title">Lenders &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp    Borrower</h3>
+                  <b> <h1> <p class="card-text">{{no_lenders}}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{no_borrower}}</p></h1></b>
+                    
+                </div>
+            </div>
+        </div>   </div>        
+
+
+
+
+</div>
+
+   
+
+{% endblock %} 
