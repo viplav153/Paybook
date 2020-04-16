@@ -18,7 +18,7 @@ def index(request,pk):
         reciever=str(s.email)
         subject='regarding borrowed money from '+str(s.hunter)
         text='hey you had borrowed RS '+str(s.amount)+' the deadline is over plzz return the amount '
-        send_mail(subject,text,'viplav153@gmail.com',
-                [reciever],fail_silently=True)
+        send_mail(subject,text,'contact@viplavanand.co',
+                [reciever],fail_silently=False)
         return render(request,'sendm/index.html')
 

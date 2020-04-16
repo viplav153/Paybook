@@ -90,7 +90,6 @@ WSGI_APPLICATION = 'paybook.wsgi.application'
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }'''
-
 DATABASES = {
   'default': {
     'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -162,10 +161,10 @@ LOGIN_REDIRECT_URL ='create'
 DATE_FORMAT = '%d-%m-%Y'
 DATE_INPUT_FORMATS = ['%d-%m-%Y']
 
-EMAIL_HOST='smtp.gmail.com'
-EMAIL_PORT=587
-EMAIL_HOST_USER='ssk153@gmail.com'
-EMAIL_HOST_PASSWORD='03ususjsj'
+EMAIL_HOST='mail.viplavanand.co'
+EMAIL_PORT=25
+EMAIL_HOST_USER='contact@viplavanand.co'
+EMAIL_HOST_PASSWORD='Viplav@153'
 EMAIL_USE_TLS=True
 EMAIL_USE_SSL=False
 
