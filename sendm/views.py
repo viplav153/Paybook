@@ -19,6 +19,6 @@ def index(request,pk):
         subject='regarding borrowed money from '+str(s.hunter)
         text='hey you had borrowed RS '+str(s.amount)+' the deadline is over plzz return the amount '
         send_mail(subject,text,'contact@viplavanand.co',
-                [reciever],fail_silently=False)
+                [reciever],fail_silently=True)
         return render(request,'sendm/index.html')
 
