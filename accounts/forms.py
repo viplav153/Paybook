@@ -7,6 +7,7 @@ class UserRegisterForm(UserCreationForm):
     email=forms.EmailField()
     
     
+    
 
 
     class Meta:
