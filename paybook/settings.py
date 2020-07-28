@@ -162,9 +162,9 @@ DATE_FORMAT = '%d-%m-%Y'
 DATE_INPUT_FORMATS = ['%d-%m-%Y']
 
 EMAIL_HOST='mail.viplavanand.co'
-EMAIL_PORT=25
+EMAIL_PORT=23
 EMAIL_HOST_USER='contact@viplavanand.co'
-EMAIL_HOST_PASSWORD='Viplav@153'
+EMAIL_HOST_PASSWORD='thisisnotpassword'
 EMAIL_USE_TLS=True
 EMAIL_USE_SSL=False
 
